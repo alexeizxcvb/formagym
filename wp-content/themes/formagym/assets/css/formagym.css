@@ -1,0 +1,752 @@
+/* Formagym - css extra, restul e in theme.json */
+
+:root {
+	--fg-text-secundar: var(--wp--preset--color--gri);
+	--fg-linie: var(--wp--preset--color--bordura);
+}
+
+.has-negru-background-color {
+	--fg-text-secundar: var(--wp--preset--color--gri-deschis);
+	--fg-linie: rgba(255, 255, 255, 0.14);
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* archivo e font variabil, titlurile le fac mai late */
+h1,
+h2,
+.wp-block-site-title,
+.fg-pret {
+	font-stretch: 125%;
+}
+
+h3,
+h4 {
+	font-stretch: 112%;
+}
+
+h1,
+h2,
+h3 {
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+/* fara spatiu intre header, continut si footer */
+.wp-site-blocks > * {
+	margin-block-start: 0;
+}
+
+[id] {
+	scroll-margin-top: 5.5rem;
+}
+
+:where(a, button, summary, input, .wp-element-button):focus-visible {
+	outline: 3px solid var(--wp--preset--color--rosu);
+	outline-offset: 3px;
+}
+
+/* ===== HEADER ===== */
+
+.fg-antet-wrap {
+	position: sticky;
+	top: var(--wp-admin--admin-bar--height, 0px);
+	z-index: 100;
+}
+
+.fg-antet {
+	border-bottom: 1px solid var(--wp--preset--color--bordura);
+}
+
+.fg-logo a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55em;
+}
+
+.fg-logo a::before {
+	content: "";
+	flex: none;
+	width: 1.6em;
+	height: 1.6em;
+	background: url("../images/disc.svg") center / contain no-repeat;
+}
+
+.fg-meniu .wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--rosu);
+}
+
+.fg-meniu .wp-block-navigation__responsive-container.is-menu-open {
+	padding: 1.5rem var(--wp--preset--spacing--50);
+}
+
+.fg-meniu .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+	align-items: flex-start;
+}
+
+.fg-meniu .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+	font-size: 1.5rem;
+	font-weight: 700;
+	font-stretch: 112%;
+}
+
+.fg-meniu .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--alb);
+	text-decoration: underline;
+}
+
+/* pe tableta meniul nu incape pe un rand -> hamburger mai devreme */
+@media (min-width: 600px) and (max-width: 1079px) {
+	.fg-meniu .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.fg-meniu .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+}
+
+.fg-antet-buton .wp-block-button__link {
+	padding: 0.55rem 1rem;
+	font-size: 0.9375rem;
+	white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+	.wp-block-buttons.fg-antet-buton {
+		display: none;
+	}
+}
+
+/* ===== BUTOANE ===== */
+
+.wp-element-button,
+.wp-block-button__link {
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link {
+	background: transparent;
+	border-color: currentColor;
+	color: inherit;
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background: var(--wp--preset--color--negru);
+	border-color: var(--wp--preset--color--negru);
+	color: var(--wp--preset--color--alb);
+}
+
+.has-negru-background-color .wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background: var(--wp--preset--color--alb);
+	border-color: var(--wp--preset--color--alb);
+	color: var(--wp--preset--color--negru);
+}
+
+.has-negru-background-color a:where(:not(.wp-element-button)):hover {
+	color: var(--wp--preset--color--alb);
+	text-decoration-thickness: 2px;
+}
+
+/* ===== SECTIUNI ===== */
+
+.fg-intro {
+	margin-bottom: var(--wp--preset--spacing--60);
+}
+
+.fg-intro h2 {
+	margin: 0;
+	max-width: 15ch;
+}
+
+.fg-intro p {
+	margin: 0;
+	max-width: 34rem;
+	color: var(--fg-text-secundar);
+}
+
+.fg-intro p + p {
+	margin-top: 0.75rem;
+}
+
+.fg-meta {
+	color: var(--fg-text-secundar);
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+/* hero */
+.fg-hero {
+	min-height: min(calc(100svh - 4.5rem), 52rem);
+}
+
+.fg-hero > .wp-block-media-text__content {
+	padding-block: var(--wp--preset--spacing--70);
+	padding-inline: max(var(--wp--preset--spacing--50), calc((100vw - 1280px) / 2)) var(--wp--preset--spacing--60);
+}
+
+.fg-hero h1 {
+	margin: 0;
+	font-size: clamp(2.15rem, 0.9rem + 3.6vw, 4.1rem);
+}
+
+.fg-hero__text {
+	max-width: 36rem;
+	margin-top: 1.5rem;
+	font-size: var(--wp--preset--font-size--medium);
+	color: var(--fg-text-secundar);
+}
+
+.fg-hero .wp-block-buttons {
+	margin-top: 2rem;
+}
+
+@media (max-width: 960px) {
+	.fg-hero.wp-block-media-text {
+		grid-template-columns: 100% !important;
+		min-height: 0;
+	}
+
+	.fg-hero.wp-block-media-text > .wp-block-media-text__content {
+		grid-column: 1;
+		grid-row: 1;
+		padding-inline: var(--wp--preset--spacing--50);
+	}
+
+	.fg-hero.wp-block-media-text > .wp-block-media-text__media {
+		grid-column: 1;
+		grid-row: 2;
+		min-height: 62vw;
+	}
+}
+
+/* ceasul din hero, font DSEG7 ca la cronometrele din sala */
+.fg-ceas {
+	width: fit-content;
+	margin-top: var(--wp--preset--spacing--50);
+	padding: 0.85rem 1.3rem 0.85rem 1.1rem;
+	gap: 1.1rem;
+	border-radius: 14px;
+	background: #131518;
+	color: #c3c8ce;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+	/* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); */
+}
+
+.fg-ceas__ora {
+	position: relative;
+	margin: 0;
+	font-family: var(--wp--preset--font-family--ceas);
+	font-size: 2.4rem;
+	font-weight: 700;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: 0;
+	color: #ff3b30;
+	text-shadow: 0 0 12px rgba(255, 59, 48, 0.55);
+	white-space: nowrap;
+}
+
+.fg-ceas__ora::before {
+	content: "88:88";
+	position: absolute;
+	inset: 0;
+	color: rgba(255, 59, 48, 0.1);
+	text-shadow: none;
+}
+
+.fg-ceas__puncte {
+	animation: fg-clipire 1s steps(1, end) infinite;
+}
+
+@keyframes fg-clipire {
+	50% {
+		opacity: 0.15;
+	}
+}
+
+.fg-ceas__stare {
+	margin: 0;
+	font-size: 0.875rem;
+	line-height: 1.45;
+}
+
+.fg-ceas__stare strong {
+	color: #fff;
+	font-weight: 700;
+}
+
+.fg-ceas.is-deschis .fg-ceas__stare strong::before,
+.fg-ceas.is-inchis .fg-ceas__stare strong::before {
+	content: "";
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.5rem;
+	margin-right: 0.45rem;
+	border-radius: 50%;
+	background: #3ddc84;
+	vertical-align: 0.08em;
+}
+
+.fg-ceas.is-inchis .fg-ceas__stare strong::before {
+	background: #ff3b30;
+}
+
+/* sala - o poza mare + 2 mici, dedesubt dotarile */
+.fg-mozaic {
+	margin-top: 0;
+}
+
+.fg-mozaic .wp-block-image {
+	margin: 0;
+}
+
+.fg-mozaic img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+}
+
+.fg-mozaic > .wp-block-column:first-child img {
+	aspect-ratio: 3 / 2;
+}
+
+.fg-mozaic > .wp-block-column:last-child {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--30);
+}
+
+.fg-mozaic > .wp-block-column:last-child > .wp-block-image {
+	position: relative;
+	flex: 1;
+	min-height: 10rem;
+	margin: 0;
+}
+
+.fg-mozaic > .wp-block-column:last-child > .wp-block-image img {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+}
+
+@media (max-width: 781px) {
+	.fg-mozaic > .wp-block-column:last-child {
+		flex-direction: row;
+	}
+}
+
+.fg-dotari {
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.fg-dotare {
+	padding-top: 1rem;
+	border-top: 2px solid var(--fg-linie);
+}
+
+.fg-dotare h3 {
+	margin: 0 0 0.4rem;
+	font-size: 1.1875rem;
+}
+
+.fg-dotare p {
+	margin: 0;
+	color: var(--fg-text-secundar);
+}
+
+/* clase */
+.wp-block-group.fg-clase,
+.wp-block-group.fg-antrenori {
+	row-gap: var(--wp--preset--spacing--60);
+}
+
+.fg-clasa .wp-block-image {
+	margin: 0 0 1.1rem;
+}
+
+.fg-clasa h3 {
+	margin: 0 0 0.4rem;
+}
+
+.fg-clasa p {
+	margin: 0;
+}
+
+.fg-clasa .fg-meta {
+	margin-top: 0.65rem;
+}
+
+/* orar */
+.fg-orar {
+	margin: 0;
+}
+
+.fg-orar table {
+	min-width: 760px;
+	border-collapse: collapse;
+	font-size: 0.9375rem;
+}
+
+.fg-orar thead {
+	border-bottom: 0;
+}
+
+.fg-orar th,
+.fg-orar td {
+	padding: 0.8rem 0.9rem;
+	border: 1px solid var(--wp--preset--color--bordura);
+	text-align: left;
+	vertical-align: top;
+}
+
+.fg-orar thead th {
+	border-color: var(--wp--preset--color--negru);
+	background: var(--wp--preset--color--negru);
+	color: var(--wp--preset--color--alb);
+	font-weight: 700;
+}
+
+.fg-orar tbody td:first-child {
+	background: var(--wp--preset--color--fundal);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.fg-orar figcaption {
+	margin-top: 1rem;
+	color: var(--fg-text-secundar);
+	font-size: 0.875rem;
+	text-align: left;
+}
+
+/* abonamente - dunga de sus in culorile discurilor de greutate */
+.fg-abonament {
+	--fg-disc: var(--wp--preset--color--rosu);
+	display: flex;
+	flex-direction: column;
+	padding: var(--wp--preset--spacing--50);
+	border-top: 6px solid var(--fg-disc);
+	border-radius: 0 0 4px 4px;
+	background: var(--wp--preset--color--gri-inchis);
+}
+
+.fg-abonament--verde {
+	--fg-disc: var(--wp--preset--color--verde);
+}
+
+.fg-abonament--albastru {
+	--fg-disc: var(--wp--preset--color--albastru);
+}
+
+.fg-abonament--recomandat {
+	--fg-text-secundar: var(--wp--preset--color--gri);
+	background: var(--wp--preset--color--alb);
+	color: var(--wp--preset--color--negru);
+}
+
+.fg-abonament h3 {
+	margin: 0;
+}
+
+.fg-abonament .fg-abonament__pentru {
+	margin: 0.4rem 0 0;
+	color: var(--fg-text-secundar);
+}
+
+.fg-eticheta {
+	align-self: flex-start;
+	margin: 0 0 0.9rem !important;
+	padding: 0.25rem 0.6rem;
+	border-radius: 2px;
+	background: var(--fg-disc);
+	color: var(--wp--preset--color--alb);
+	font-size: 0.8125rem;
+	font-weight: 700;
+}
+
+.fg-abonament .fg-pret {
+	margin: 1.6rem 0 0;
+	font-size: clamp(2.5rem, 1.9rem + 2vw, 3.25rem);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+
+.fg-pret span {
+	margin-left: 0.3rem;
+	font-size: 1rem;
+	font-weight: 600;
+	font-stretch: 100%;
+	letter-spacing: 0;
+	color: var(--fg-text-secundar);
+}
+
+.fg-abonament .is-style-bife {
+	margin: 1.6rem 0 0;
+}
+
+.fg-abonament .wp-block-buttons {
+	margin-top: auto;
+	padding-top: 2rem;
+}
+
+.fg-abonament--recomandat .wp-block-button__link {
+	border-color: var(--wp--preset--color--rosu);
+}
+
+.fg-extra {
+	margin-top: var(--wp--preset--spacing--50);
+	padding-top: var(--wp--preset--spacing--40);
+	border-top: 1px solid var(--fg-linie);
+}
+
+.fg-extra p {
+	margin: 0;
+	color: var(--fg-text-secundar);
+	font-size: 0.9375rem;
+}
+
+.fg-extra strong {
+	color: var(--wp--preset--color--alb);
+}
+
+/* lista cu bife (stilul e inregistrat in functions.php) */
+.is-style-bife {
+	padding-left: 0;
+	list-style: none;
+}
+
+.is-style-bife li {
+	position: relative;
+	padding-left: 1.75rem;
+}
+
+.is-style-bife li + li {
+	margin-top: 0.55rem;
+}
+
+.is-style-bife li::before {
+	content: "";
+	position: absolute;
+	top: 0.42em;
+	left: 0.15rem;
+	width: 0.8rem;
+	height: 0.42rem;
+	border-bottom: 2.5px solid var(--fg-disc, var(--wp--preset--color--rosu));
+	border-left: 2.5px solid var(--fg-disc, var(--wp--preset--color--rosu));
+	transform: rotate(-45deg);
+}
+
+/* antrenori */
+.fg-antrenor .wp-block-image {
+	margin: 0 0 1rem;
+}
+
+.fg-antrenor h3 {
+	margin: 0;
+}
+
+.fg-antrenor .fg-specializare {
+	margin: 0.25rem 0 0;
+	color: var(--wp--preset--color--rosu);
+	font-size: 0.9375rem;
+	font-weight: 700;
+}
+
+.fg-antrenor .fg-specializare + p {
+	margin: 0.65rem 0 0;
+	color: var(--fg-text-secundar);
+	font-size: 0.9375rem;
+}
+
+/* recenzii */
+.fg-recenzie {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.fg-recenzie p {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+	line-height: 1.35;
+	letter-spacing: -0.01em;
+}
+
+.fg-recenzie cite {
+	display: block;
+	margin-top: 1rem;
+	color: var(--fg-text-secundar);
+	font-size: 0.9375rem;
+	font-style: normal;
+}
+
+/* faq */
+.fg-intrebari .wp-block-details {
+	margin: 0 !important;
+	padding: 1.15rem 0;
+	border-top: 1px solid var(--fg-linie);
+}
+
+.fg-intrebari .wp-block-details:last-child {
+	border-bottom: 1px solid var(--fg-linie);
+}
+
+.fg-intrebari summary {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+	list-style: none;
+	cursor: pointer;
+}
+
+.fg-intrebari summary::-webkit-details-marker {
+	display: none;
+}
+
+.fg-intrebari summary::after {
+	content: "+";
+	flex: none;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1;
+	transition: transform 0.2s ease;
+}
+
+.fg-intrebari details[open] > summary::after {
+	transform: rotate(45deg);
+}
+
+.fg-intrebari details > p {
+	max-width: 40rem;
+	margin: 0.75rem 0 0;
+	color: var(--fg-text-secundar);
+}
+
+/* rezervare + harta */
+.fg-contacte {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+.fg-contacte p {
+	margin: 0;
+	color: var(--fg-text-secundar);
+	font-size: 0.9375rem;
+}
+
+.fg-contacte strong {
+	color: var(--wp--preset--color--alb);
+	font-size: 1rem;
+}
+
+.fg-harta {
+	height: 100%;
+	min-height: 26rem;
+	overflow: hidden;
+	border-radius: 4px;
+	background: var(--wp--preset--color--gri-inchis);
+}
+
+/* TODO: poate google maps in loc de osm? */
+.fg-harta iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 26rem;
+	border: 0;
+	filter: grayscale(1) contrast(1.05);
+}
+
+.fg-harta-link {
+	margin-top: 0.75rem;
+	font-size: 0.875rem;
+}
+
+/* ===== FOOTER ===== */
+
+.fg-subsol a {
+	text-decoration: none;
+}
+
+.fg-subsol a:hover {
+	color: var(--wp--preset--color--alb);
+	text-decoration: underline;
+}
+
+.fg-subsol .fg-logo {
+	color: var(--wp--preset--color--alb);
+}
+
+.fg-subsol .fg-subsol-titlu {
+	margin: 0 0 1rem;
+	color: var(--wp--preset--color--alb);
+	font-size: 1rem;
+	font-stretch: 100%;
+	letter-spacing: 0;
+}
+
+.fg-lista-simpla {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fg-lista-simpla li + li {
+	margin-top: 0.45rem;
+}
+
+.fg-subsol .fg-retele.is-style-logos-only .wp-social-link {
+	color: var(--wp--preset--color--alb);
+}
+
+.fg-subsol .fg-retele {
+	gap: 0.9rem;
+	font-size: 22px;
+}
+
+.fg-subsol-jos {
+	margin-top: var(--wp--preset--spacing--60);
+	padding-top: var(--wp--preset--spacing--30);
+	border-top: 1px solid var(--fg-linie);
+}
+
+.fg-subsol-jos p {
+	margin: 0;
+}
+
+/* ===== PAGINI ===== */
+
+.fg-titlu-pagina h1 {
+	margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.fg-ceas__puncte {
+		animation: none;
+	}
+
+	.fg-intrebari summary::after {
+		transition: none;
+	}
+}
